@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>Firebase_form</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="box">
+            <div class="form">
+                <h2>Sign Up</h2>
+                <h4>Create Your Account</h4>
+
+                <form>
+                    <div class="inputbox">
+                        <input type="text" value="" id="username" required>
+                        <span>Name</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="email" value="" id="email" required>
+                        <span>E-mail</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" value="" id="phone" required>
+                        <span>Phone Number</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" value="" id="address" required>
+                        <span>Address</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="password" value="" id="password" required>
+                        <span>Password</span>
+                    </div>
+                    <input type="submit" value="Submit" class="sub" id="submit">
+                </form>
+            </div>
+        </div>
+        <script type="module">
+               // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+            import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+  
+  // Your web app's Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyDnSmoev2_OdP8Cx87Maaii62_xV2Wy4vo",
+                authDomain: "loginsignup-2e5d5.firebaseapp.com",
+                projectId: "loginsignup-2e5d5",
+                storageBucket: "loginsignup-2e5d5.appspot.com",
+                messagingSenderId: "414321607267",
+                appId: "1:414321607267:web:29a5c8842b3e7386102e56",
+                measurementId: "G-1EGK4DR00L"
+            };
+
+  // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+
+   //get ref to database services
+             const db = getDatabase(app);
+
+             document.getElementById("submit").addEventListener('click', function(e){
+              e.preventDefault();
+              set(ref(db, 'user/' + document.getElementById("username").value),
+              {
+   
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value,
+                PhoneNumber: document.getElementById("phone").value,
+                Address: document.getElementById("address").value,
+                Password: document.getElementById("password").value
+
+              });
+                alert("Sucessfull!! Thank you For Creating your Account.  ");
+             })
+        </script>
+    </body>
+</html>
