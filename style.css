@@ -10,7 +10,7 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(img/bg.jpg);
+    background: url(Images/bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
